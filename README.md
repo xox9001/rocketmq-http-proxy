@@ -15,21 +15,21 @@ version: v1.11.1
 
 //rocketmq namesrvaddr 地址
 
-Producer.NamesrvAddr = "192.168.31.152:9876"
+`Producer.NamesrvAddr = "192.168.31.152:9876"`
 
 //需要监听的HTTP服务地址和端口
 
-HttpSrv.Addr = "192.168.31.152:7776"
+`HttpSrv.Addr = "192.168.31.152:7776"`
 
 //Http服务最大并发数，具体作用请千万 fasthttp 配置查看，主要是http服务能最大同时处理的并发连接数；
 
 //fasthttp 是单线程模型，有效避免内存复制和回收问题，性能比较高
 
-HttpSrv.Concurrency = 10000
+`HttpSrv.Concurrency = 10000`
 
 //消息处理通道，当http server接受到消息后，经过Decode 方法将消息转发到此channel，再由内部producer发送至broker,producer到broker为长连接，而且只在服务启动时请求namesrv一次
 
-HttpMssageChannel = make(chan *rocketmq.Message,10000)
+`HttpMssageChannel = make(chan *rocketmq.Message,10000)`
 
 ==========
 目前只开放了一个消息转发接口
@@ -46,7 +46,7 @@ Request Body 为json格式
   
 	Body string		`json:"body"`
   
-	DelayLevel int  `json:"delay_level"`
+	DelayLevel int          `json:"delay_level"`
   
 	Key string		`json:"key"`
   
