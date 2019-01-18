@@ -59,8 +59,8 @@ Example: {"topic":"abcaa","body":"aaaaa","key":"1","tags":"show msg","delay_leve
 
 Req Example:
 
-`curl -X POST \
-  http://192.168.31.152:7776/acquire_msg \
+`curl -X POST 
+  http://192.168.31.152:7776/acquire_msg 
   -d '{"topic":"abcaa","body":"aaaaa","key":"1"}'
 `
 
