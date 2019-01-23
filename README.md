@@ -31,6 +31,56 @@ version: v1.11.1
 
 `HttpMssageChannel = make(chan *rocketmq.Message,10000)`
 
+
+#关于编译与安装：
+
+目前需要手动编译。
+
+首先构建目录：
+
+`mkdir -p /project/src`
+
+`cd /project/src`
+
+`git clone https://github.com/xox9001/rocketmq-http-proxy.git ./`
+
+`export GOPATH=$PWD:$GOPATH`
+
+`go get github.com/valyala/fasthttp`
+
+`go get github.com/qiangxue/fasthttp-routing`
+
+至此，GO依赖环境已经安装完毕，下面安装RocketMQ Cpp SDK:
+
+这里需要重新建立目录，不要到src里面。
+
+Install librocketmq
+because the project top on rocketmq-client-cpp, so you need install librocketmq first.
+
+`include file`
+
+`git clone https://github.com/apache/rocketmq-client-cpp`
+
+By default, CFLAGS contains `/usr/local/include`
+
+`sudo mkdir -p /usr/local/include/rocketmq/`
+`sudo cp rocketmq-client-cpp/include/* /usr/local/include/rocketmq`
+
+最后，安装 RoeketMQ Go SDK:
+
+`cd /project/src`
+
+`go get github.com/apache/rocketmq-client-go`
+
+编译：
+
+`go build -o rocketmq-http-producer main.go`
+
+运行：
+
+`./rocketmq-http-producer`
+
+
 ==========
 目前只开放了一个消息转发接口
 
@@ -56,7 +106,7 @@ Request Body 为json格式
 Example: {"topic":"abcaa","body":"aaaaa","key":"1","tags":"show msg","delay_level":1}
 
 
-
+Âƒ
 Req Example:
 
 `curl -X POST 
